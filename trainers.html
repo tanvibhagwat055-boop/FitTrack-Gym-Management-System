@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Trainers | FitTrack{% endblock %}
+{% block content %}
+<div class="title"><p class="eyebrow">TRAINER MANAGEMENT</p><h1>Trainers</h1><p>Store trainer information in the database.</p></div>
+<section class="form panel"><h2>Add trainer</h2><form method="post"><input name="name" placeholder="Trainer name" required><input name="specialization" placeholder="Specialization" required><input name="phone" placeholder="Phone" required><button class="btn">Add Trainer</button></form></section>
+<section class="cards">{% for t in trainers %}<article class="card"><span class="tag">{{ t.specialization }}</span><h2>{{ t.name }}</h2><p>{{ t.phone }}</p></article>{% endfor %}</section>
+{% endblock %}

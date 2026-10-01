@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Classes | FitTrack{% endblock %}
+{% block content %}
+<div class="title"><p class="eyebrow">SCHEDULE</p><h1>Gym Classes</h1><p>Trainer-led classes stored with a foreign-key relationship.</p></div>
+<section class="cards">{% for c in classes %}<article class="card"><span class="tag">{{ c.day }}</span><h2>{{ c.class_name }}</h2><p>Trainer: {{ c.trainer }}</p><strong>{{ c.time }}</strong></article>{% endfor %}</section>
+{% endblock %}

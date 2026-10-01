@@ -1,0 +1,40 @@
+CREATE TABLE plans (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ duration_months INTEGER NOT NULL,
+ price REAL NOT NULL
+);
+
+CREATE TABLE trainers (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ specialization TEXT NOT NULL,
+ phone TEXT NOT NULL
+);
+
+CREATE TABLE classes (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ class_name TEXT NOT NULL,
+ trainer_id INTEGER NOT NULL,
+ day TEXT NOT NULL,
+ time TEXT NOT NULL,
+ FOREIGN KEY(trainer_id) REFERENCES trainers(id)
+);
+
+CREATE TABLE equipment (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ category TEXT NOT NULL,
+ quantity INTEGER NOT NULL,
+ condition TEXT NOT NULL
+);
+
+CREATE TABLE payments (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ payer_name TEXT NOT NULL,
+ plan_id INTEGER NOT NULL,
+ amount REAL NOT NULL,
+ payment_date TEXT NOT NULL,
+ status TEXT NOT NULL,
+ FOREIGN KEY(plan_id) REFERENCES plans(id)
+);

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Plans | FitTrack{% endblock %}
+{% block content %}
+<div class="title"><p class="eyebrow">DATABASE MODULE</p><h1>Membership Plans</h1><p>Create and store gym plans in SQLite.</p></div>
+<section class="form panel"><h2>Add a plan</h2><form method="post"><input name="name" placeholder="Plan name" required><input name="duration" type="number" placeholder="Duration in months" required><input name="price" type="number" step="0.01" placeholder="Price" required><button class="btn">Add Plan</button></form></section>
+<section class="cards">{% for p in plans %}<article class="card"><span class="tag">{{ p.duration_months }} month{% if p.duration_months != 1 %}s{% endif %}</span><h2>{{ p.name }}</h2><strong>₹{{ "%.0f"|format(p.price) }}</strong><p>Flexible gym access plan.</p></article>{% endfor %}</section>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Equipment | FitTrack{% endblock %}
+{% block content %}
+<div class="title"><p class="eyebrow">INVENTORY</p><h1>Equipment</h1><p>Track gym equipment and its condition.</p></div>
+<section class="form panel"><h2>Add equipment</h2><form method="post"><input name="name" placeholder="Equipment name" required><input name="category" placeholder="Category" required><input name="quantity" type="number" placeholder="Quantity" required><select name="condition"><option>Good</option><option>Maintenance</option><option>Needs Replacement</option></select><button class="btn">Add Equipment</button></form></section>
+<section class="panel"><table><tr><th>Name</th><th>Category</th><th>Quantity</th><th>Condition</th></tr>{% for e in equipment %}<tr><td><b>{{ e.name }}</b></td><td>{{ e.category }}</td><td>{{ e.quantity }}</td><td><span class="tag">{{ e.condition }}</span></td></tr>{% endfor %}</table></section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}FitTrack | Dashboard{% endblock %}
+{% block content %}
+<section class="hero">
+<div>
+<p class="eyebrow">GYM MANAGEMENT SYSTEM</p>
+<h1>Train smarter.<br><span>Manage better.</span></h1>
+<p>FitTrack is a simple gym management website built with Python, Flask and SQLite DBMS.</p>
+<div class="buttons"><a class="btn" href="{{ url_for('plans') }}">View Plans</a></div>
+</div>
+<div class="hero-box"><b>FITTRACK</b><small>Gym operations dashboard</small><div class="bar"></div><div class="bar short"></div><div class="bar"></div></div>
+</section>
+<section class="stats">
+<div><b>{{ stats.plans }}</b><small>Membership Plans</small></div>
+<div><b>{{ stats.trainers }}</b><small>Trainers</small></div>
+<div><b>{{ stats.classes }}</b><small>Classes</small></div>
+<div><b>{{ stats.equipment }}</b><small>Equipment Items</small></div>
+<div><b>₹{{ "%.0f"|format(stats.revenue) }}</b><small>Recorded Revenue</small></div>
+</section>
+<section class="panel">
+<div class="head"><h2>Class Schedule</h2><a href="{{ url_for('classes') }}">View all</a></div>
+<table><tr><th>Class</th><th>Trainer</th><th>Day</th><th>Time</th></tr>
+{% for c in classes %}<tr><td><b>{{ c.class_name }}</b></td><td>{{ c.trainer }}</td><td>{{ c.day }}</td><td>{{ c.time }}</td></tr>{% endfor %}
+</table>
+</section>
+{% endblock %}
